@@ -1,0 +1,18 @@
+import shutil
+import psutil # Optional: handles system metrics, or you can use standard libraries
+import sys
+
+def check_disk_space(min_threshold_percent=15):
+    """Checks the main drive's free space percentage."""
+    du = shutil.disk_usage("/")
+    free_percent = (du.free / du.total) * 100
+    print(f"Free Disk Space: {free_percent:.2f}%")
+    
+    if free_percent < min_threshold_percent:
+        print("WARNING: Disk space is running low!")
+    else:
+    print("STATUS: Disk space levels are healthy.")
+
+if __name__ == "__main__":
+    print("--- Starting IT System Health Check ---")
+    check_disk_space()
